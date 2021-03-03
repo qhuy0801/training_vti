@@ -1,6 +1,6 @@
 package com.training.entity.inheritance;
 
-public class Employee {
+public abstract class Employee {
 	private String fullName;
 	private short age;
 	private Gender gender;
