@@ -65,7 +65,7 @@ public class EmployeesManagement {
 		// search logic
 		for (Employee employee : employees) {
 			String fullName = employee.getName();
-			if (fullName.contains(s)) {
+			if (fullName.toLowerCase().contains(s.toLowerCase())) {
 				matchedEmployee.add(employee);
 				match += 1;
 			}

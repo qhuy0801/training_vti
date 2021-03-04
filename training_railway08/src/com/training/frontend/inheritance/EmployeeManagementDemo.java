@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.training.backend.inheritance.EmployeesManagement;
 import com.training.entity.inheritance.Employee;
 
-public class InheritanceDemo {
+public class EmployeeManagementDemo {
 
 //==========================================================================================
 	public static void main(String[] args) {
