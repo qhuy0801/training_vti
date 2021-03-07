@@ -1,5 +1,7 @@
 package com.training.entity.exception;
 
+import com.training.entity.utils.ScannerUtils;
+
 public class DepartmentScannerUtils {
 	private int id;
 	private String name;

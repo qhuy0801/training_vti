@@ -1,6 +1,6 @@
-package com.training.frontend.staticexercise;
+package com.training.frontend.finalexercise;
 
-import com.training.backend.staticexercsise.MyMath;
+import com.training.backend.finalexercise.MyMath;
 
 public class MyMathDemo {
 	public static void main(String[] args) {

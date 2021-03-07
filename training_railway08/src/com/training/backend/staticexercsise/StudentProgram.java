@@ -9,7 +9,7 @@ import com.training.entity.staticexercise.student.Student;
 public class StudentProgram {
 	ArrayList<Student> students = new ArrayList<>();
 
-	public void sampleData() {
+	public void sampleData() throws Exception {
 		students.add(new Student(1, "Student A"));
 		Student.donateMoney();
 
@@ -20,7 +20,7 @@ public class StudentProgram {
 		Student.donateMoney();
 	}
 
-	public void sampleData2() {
+	public void sampleData2() throws Exception {
 		students.add(new PrimaryStudent(4, "Primary student 1"));
 		students.add(new PrimaryStudent(5, "Primary student 2"));
 		students.add(new PrimaryStudent(6, "Primary student 3"));
@@ -65,7 +65,7 @@ public class StudentProgram {
 		System.out.println(SecondaryStudent.getCount());
 	}
 	
-	public void sampleData3() {
+	public void sampleData3() throws Exception {
 		students.add(new PrimaryStudent(10, "Primary student 5"));
 		students.add(new SecondaryStudent(11, "Secondary student 3"));
 	}

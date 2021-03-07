@@ -3,7 +3,7 @@ package com.training.frontend.staticexercise;
 import com.training.backend.staticexercsise.StudentProgram;
 
 public class StudentDemo {
-public static void main(String[] args) {
+public static void main(String[] args) throws Exception {
 	StudentProgram program = new StudentProgram();
 	
 	program.sampleData();

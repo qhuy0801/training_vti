@@ -1,4 +1,4 @@
-package com.training.backend.staticexercsise;
+package com.training.backend.finalexercise;
 
 public class MyMath {
 public static float min(float a, float b) {

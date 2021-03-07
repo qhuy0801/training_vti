@@ -1,6 +1,6 @@
 package com.training.frontend.exception;
 
-import com.training.entity.exception.ScannerUtils;
+import com.training.entity.utils.ScannerUtils;
 
 public class ScannerUtilsDemo {
 public static void main(String[] args) {

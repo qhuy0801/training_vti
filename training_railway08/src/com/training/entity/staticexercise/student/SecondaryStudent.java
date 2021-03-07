@@ -3,7 +3,7 @@ package com.training.entity.staticexercise.student;
 public class SecondaryStudent extends Student{
 	private static int count = 0;
 
-	public SecondaryStudent(int id, String name) {
+	public SecondaryStudent(int id, String name) throws Exception {
 		super(id, name);
 		count++;
 	}

@@ -1,4 +1,4 @@
-package com.training.entity.exception;
+package com.training.entity.utils;
 
 import java.util.Scanner;
 

@@ -7,17 +7,13 @@ public class Student {
 	private static int money = 0;
 	private static int count = 0;
 	
-	public Student(int id, String name) {
-		try {
-			count++;
+	public Student(int id, String name) throws Exception {
 			if (count > 7) {
 				throw new Exception("Maximum number of student reached, can't create this student!");
 			}
 			this.id = id;
 			this.name = name;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+			count++;
 	}
 
 	public static String getSchool() {

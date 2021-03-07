@@ -2,6 +2,8 @@ package com.training.entity.exception;
 
 import java.util.Scanner;
 
+import com.training.entity.utils.ScannerUtils;
+
 public class Account {	
 // throw and exception exercise
 	private int id;
