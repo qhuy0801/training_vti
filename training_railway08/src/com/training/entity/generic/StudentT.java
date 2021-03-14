@@ -1,10 +1,10 @@
 package com.training.entity.generic;
 
-public class Student<T> {
+public class StudentT<T> {
 	private T id;
 	private String name;
 
-	public Student(T id, String name) {
+	public StudentT(T id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

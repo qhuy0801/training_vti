@@ -3,6 +3,7 @@ package com.training.backend.map;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class StudentMapProgram {
 	Scanner in = new Scanner(System.in);
@@ -28,4 +29,7 @@ public class StudentMapProgram {
 		System.out.println(students.get(i));
 	}
 	
+	public void convertToSet() {
+		Set<Map.Entry<Integer, String>> set = students.entrySet();
+	}
 }

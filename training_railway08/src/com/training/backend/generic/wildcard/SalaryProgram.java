@@ -13,6 +13,14 @@ public class SalaryProgram {
 	}
 
 	public void sampleData() {
+		salaries.add(new Salary(23000)); // this okay >int
+		salaries.add(new Salary<Float>(2345.6f)); // this okay
+		salaries.add(new Salary((double) 2345.7d)); // this also okay
+	}
 
+	public void printData() {
+		for (Salary salary : salaries) {
+			System.out.println(salary.getSalary());
+		}
 	}
 }

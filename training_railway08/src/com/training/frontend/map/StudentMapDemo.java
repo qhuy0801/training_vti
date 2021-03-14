@@ -9,5 +9,6 @@ public static void main(String[] args) {
 	program.sampleData();
 	program.printKey();
 	program.printValue();
+	program.convertToSet();
 }
 }
