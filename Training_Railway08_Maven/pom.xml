@@ -4,22 +4,19 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vti</groupId>
-	<artifactId>Training_Railway08_Maven</artifactId>
+	<artifactId>training_railway08_maven</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Training_Railway08_Maven</name>
+	<name>training_railway08_maven</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
-	
-			<maven.compiler.source>1.8</maven.compiler.source>
-			<maven.compiler.target>1.8</maven.compiler.target>
-			
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -33,7 +30,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.23</version>
 		</dependency>
-
-
+		
 	</dependencies>
 </project>
