@@ -5,40 +5,39 @@ import java.util.Scanner;
 public class ScannerUtils {
 	static Scanner in = new Scanner(System.in);
 
-	public static int inputInt(String errorMessage) {
+	public static int inputInt() {
 		while (true) {
 			System.out.println("Input the number: ");
-			int i;
 			try {
 				String iTemp = in.nextLine();
-				i = Integer.parseInt(iTemp);
+				int i = Integer.parseInt(iTemp);
 				return i;
 			} catch (NumberFormatException e) {
-				System.out.println(errorMessage);
+				e.printStackTrace();
 			}
 		}
 	}
 
-	public static float inputFloat(String errorMessage) {
+	public static float inputFloat() {
 		while (true) {
 			System.out.println("Please input float: ");
-			float i;
 			try {
 				String iTemp = in.nextLine();
-				i = Float.parseFloat(iTemp);
+				float i = Float.parseFloat(iTemp);
 				return i;
 			} catch (NumberFormatException e) {
-				System.out.println(errorMessage);
+				e.printStackTrace();
 			}
 		}
 	}
 
 	public static String inputString() {
-		System.out.println("Please input string");
+		System.out.print("Please input string: ");
+		in.nextLine(); // to consumer excess line
 		String s = in.nextLine();
 		return s;
 	}
-
+// add ins
 	public static int inputAge() {
 		Scanner in = new Scanner(System.in);
 		while (true) {

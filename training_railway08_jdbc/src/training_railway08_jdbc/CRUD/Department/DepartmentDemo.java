@@ -1,10 +1,15 @@
 package training_railway08_jdbc.CRUD.Department;
 
-import java.sql.SQLException;
+import java.util.List;
 
 public class DepartmentDemo {
-public static void main(String[] args) throws ClassNotFoundException, SQLException {
+public static void main(String[] args) throws Exception {
 	DepartmentProgram program = new DepartmentProgram();
 	
+	List<Department> getListDepartment = program.getListDepartment();
+	
+	for (Department department : getListDepartment) {
+		System.out.println(department.toString());
+	}
 }
 }

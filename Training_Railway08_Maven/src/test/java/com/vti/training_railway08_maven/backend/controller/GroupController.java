@@ -34,11 +34,13 @@ public class GroupController {
 		// execute
 		groupService.createGroup(name);
 	}
-
 	public void updateGroup(int id, String newName) throws Exception {
 		// validate
 		if (groupService.isGroupIDExists(id) == false) {
 			throw new Exception("There is no group with this id!");
+		}
+		if (StringUtils.isNullOrEmpty(newName)) {
+			throw new Exception("The name must be not empty!");
 		}
 		// execute
 		groupService.updateGroup(id, newName);

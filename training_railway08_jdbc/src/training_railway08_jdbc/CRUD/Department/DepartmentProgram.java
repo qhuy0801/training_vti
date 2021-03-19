@@ -3,19 +3,18 @@ package training_railway08_jdbc.CRUD.Department;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import training_railway08_jdbc.ConnectProtocol;
+import training_railway08_jdbc.JDBCUtils;
 
 public class DepartmentProgram {
 
-	public List<Department> getListDepartment() throws ClassNotFoundException, SQLException {
+	public List<Department> getListDepartment() throws Exception {
 //	Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //	Create list to store data
@@ -37,9 +36,9 @@ public class DepartmentProgram {
 		return data;
 	}
 
-	public List<Department> getIDDepartment() throws ClassNotFoundException, SQLException {
+	public List<Department> getIDDepartment() throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //		Create list to store data
@@ -67,9 +66,9 @@ public class DepartmentProgram {
 		return data;
 	}
 
-	public boolean isDepartmentNameExists(String name) throws ClassNotFoundException, SQLException {
+	public boolean isDepartmentNameExists(String name) throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //		Create list to store data
@@ -98,9 +97,9 @@ public class DepartmentProgram {
 		}
 	}
 
-	public void createDepartment(String name) throws ClassNotFoundException, SQLException {
+	public void createDepartment(String name) throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //	Check if department name exits
@@ -127,9 +126,9 @@ public class DepartmentProgram {
 		}
 	}
 
-	public boolean isDepartmentIDExists(int id) throws ClassNotFoundException, SQLException {
+	public boolean isDepartmentIDExists(int id) throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //		Create list to store data
@@ -157,9 +156,9 @@ public class DepartmentProgram {
 		}
 	}
 
-	public void updateDepartmentName(int id, String newName) throws ClassNotFoundException, SQLException {
+	public void updateDepartmentName(int id, String newName) throws Exception {
 //	Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 //Check if department name exits
@@ -184,9 +183,9 @@ public class DepartmentProgram {
 		}
 	}
 
-	public void deleteDepartment(int id) throws ClassNotFoundException, SQLException {
+	public void deleteDepartment(int id) throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 		// Check if department name exits
@@ -211,9 +210,9 @@ public class DepartmentProgram {
 		}
 	}
 
-	public void deleteDepartmentUsingProcedure(int id) throws ClassNotFoundException, SQLException {
+	public void deleteDepartmentUsingProcedure(int id) throws Exception {
 //		Connect to database	
-		ConnectProtocol protocol = new ConnectProtocol();
+		JDBCUtils protocol = new JDBCUtils();
 		Connection connection = protocol.connect();
 
 		// Check if department name exits
