@@ -1,4 +1,4 @@
-package com.training_vti.java_advanced.backend.repository_abc;
+package com.training_vti.java_advanced.backend.repository.testingsystem_abc;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

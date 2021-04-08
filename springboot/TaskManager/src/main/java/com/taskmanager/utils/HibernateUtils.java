@@ -1,4 +1,4 @@
-package com.training_vti.java_advanced.utils;
+package com.taskmanager.utils;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,45 +6,45 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import com.training_vti.java_advanced.entity.testingsystem.Group;
+import com.taskmanager.entity.account.Account;
+import com.taskmanager.entity.task.Task;
 
 public class HibernateUtils {
-	
+
 	private static HibernateUtils instance;
 
 	private Configuration configuration;
 	private SessionFactory sessionFactory;
 
-	// get instance of HibernateUtils
 	public static HibernateUtils getInstance() {
-		if (instance == null) {
+		if (null == instance) {
 			instance = new HibernateUtils();
 		}
 		return instance;
 	}
 
-	// make constructor private > can not initialize this class from outside
 	private HibernateUtils() {
 		configure();
 	}
 
 	private void configure() {
-		// Loading configuration
-		Configuration configuration = new Configuration();
+		// load configuration
+		configuration = new Configuration();
 		configuration.configure("hibernate.cfg.xml");
 
-		// Add entity (table name)
-		configuration.addAnnotatedClass(Group.class);
+		// auto scan entity
+		configuration.addAnnotatedClass(Task.class);
+		configuration.addAnnotatedClass(Account.class);
 	}
 
 	private SessionFactory buildSessionFactory() {
 		if (null == sessionFactory || sessionFactory.isClosed()) {
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties()).build();
-		
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+					.applySettings(configuration.getProperties()).build();
+
+			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		}
-		// Return Hibernate instance
+
 		return sessionFactory;
 	}
 
@@ -53,9 +53,10 @@ public class HibernateUtils {
 			sessionFactory.close();
 		}
 	}
-	
+
 	public Session openSession() {
 		buildSessionFactory();
 		return sessionFactory.openSession();
 	}
+
 }

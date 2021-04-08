@@ -1,4 +1,4 @@
-package com.training_vti.java_advanced.backend.repository_abc;
+package com.training_vti.java_advanced.backend.repository.testingsystem_abc;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 
-import com.training_vti.java_advanced.entity.testingsystem.Group;
 import com.training_vti.java_advanced.entity.testingsystem_abc.Department;
 
 public class DepartmentRepository {

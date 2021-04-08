@@ -2,7 +2,7 @@ package com.training_vti.java_advanced.frontend;
 
 import java.util.List;
 
-import com.training_vti.java_advanced.backend.repository_abc.DepartmentRepository;
+import com.training_vti.java_advanced.backend.repository.testingsystem_abc.DepartmentRepository;
 import com.training_vti.java_advanced.entity.testingsystem_abc.Department;
 
 public class Department_abcDemo {

@@ -3,8 +3,8 @@ package com.training_vti.java_advanced.frontend;
 import java.util.List;
 import java.util.Scanner;
 
-import com.training_vti.java_advanced.backend.repository.GroupRepository;
-import com.training_vti.java_advanced.entity.testingsystem.Group;
+import com.training_vti.java_advanced.backend.repository.testingsystem_abc.GroupRepository;
+import com.training_vti.java_advanced.entity.testingsystem_abc.Group;
 
 public class GroupCRUDDemo {
 	public static void main(String[] args) {
