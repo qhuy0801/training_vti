@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.trainingvti.entity.Department.DetailDepartment;
 
 @Entity
@@ -27,6 +28,7 @@ public class Address implements Serializable {
 	@Column(name = "AddressName", nullable = false, unique = true)
 	private String name;
 
+//	@JsonManagedReference
 	@OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
 	private Set<DetailDepartment> departments;
 

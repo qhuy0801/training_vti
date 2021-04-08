@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.trainingvti.entity.Address;
 
 @Entity
@@ -18,6 +19,7 @@ import com.trainingvti.entity.Address;
 public class DetailDepartment extends Department implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+//	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AddressID", nullable = false)
 	private Address address;

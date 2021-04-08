@@ -1,4 +1,4 @@
-package com.trainingvti.backend.repository;
+package com.trainingvti.backend.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import com.trainingvti.entity.Address;
 import com.trainingvti.entity.Department.Department;
 import com.trainingvti.entity.Department.DetailDepartment;
 
-public interface IDepartmentRepository {
+public interface IDepartmentService {
 	public Department getDepartmentID(short id);
 	public void createDepartment(String name, short emulationPoint, short address);
 	public List<Department> getDepartmentAll();
