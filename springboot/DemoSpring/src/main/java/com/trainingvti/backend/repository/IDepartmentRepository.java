@@ -8,10 +8,10 @@ import com.trainingvti.entity.Department.DetailDepartment;
 
 public interface IDepartmentRepository {
 	public Department getDepartmentID(short id);
-	public void createDepartment(String name, short emulationPoint, short address);
 	public List<Department> getDepartmentAll();
 	public void deleteDepartment(short id);
 	public void createDepartment(Department department);
+	public void createDetailDepartment(DetailDepartment department);
 	public void updateDepartment(Department department);
 	public Address getAddressID(short id);
 }

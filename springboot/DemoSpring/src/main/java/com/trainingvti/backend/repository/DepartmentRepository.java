@@ -40,37 +40,21 @@ public class DepartmentRepository implements IDepartmentRepository{
 		}
 	}
 	
-	public void createDepartment(String name, short emulationPoint, short address) {
+	public void createDetailDepartment(DetailDepartment department) {
+
 		Session session = null;
 
 		try {
-			// Step 1: create session
+
+			// get session
 			session = hibernateUtils.openSession();
-			// transaction is needed for creating since the rollback is necessary precaution
 			session.beginTransaction();
 
-			// create group
-			DetailDepartment department = new DetailDepartment();
-			department.setName(name);
-			department.setEmulationPoint(emulationPoint);
-			department.setAddress(getAddressID(address));
-
-			// Step 2: create
+			// create
 			session.save(department);
 
-			System.out.println("Create successfully");
-
-			// Step 3: commnit
 			session.getTransaction().commit();
-		} catch (Exception sqlException) {
-			// Step 4 (just in case action is failed to finish): rollback transaction
-			if (null != session.getTransaction()) {
-				sqlException.printStackTrace();
-				System.out.println("\n...Transaction is being rolled back...");
-				session.getTransaction().rollback();
-			}
 		} finally {
-			// Step 5: Close session
 			if (session != null) {
 				session.close();
 			}

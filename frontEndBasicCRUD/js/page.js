@@ -18,12 +18,12 @@ function clickNavListEmployee() {
 }
 
 // initiate employees array
-var employees = [];
+var departments = [];
 
 function getListEmployee() {
   // empty the old data first
   $('tbody').empty();
-  $.get("https://6060430004b05d0017ba22b2.mockapi.io/api/v1/Employee", function (data, status) {
+  $.get("http://localhost:8080/api/v1/departments", function (data, status) {
     employees = data;
     employees.forEach(function (item) {
       $("tbody").append(
@@ -32,10 +32,9 @@ function getListEmployee() {
             <td>
               <a href="#">${item.name}</a>
             </td>
-            <td>${item.createDate}</td>
-            <td>${item.role}</td>
-            <td><span class="status text-success">&bull;</span> ${item.status
-        }</td>
+            <td>${item.address}</td>
+            <td>${item.emulationPoint}</td>
+            </td>
             <td>
               <a
                 href="#"

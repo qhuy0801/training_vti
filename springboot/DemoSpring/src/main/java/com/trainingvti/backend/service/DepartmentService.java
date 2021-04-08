@@ -19,11 +19,7 @@ public class DepartmentService implements IDepartmentService{
 	public Department getDepartmentID(short id) {
 		return repository.getDepartmentID(id);
 	}
-	
-	public void createDepartment(String name, short emulationPoint, short address) {
-		repository.createDepartment(name, emulationPoint, address);
-	}
-	
+		
 	public List<Department> getDepartmentAll() {
 		return repository.getDepartmentAll();
 	}
@@ -38,6 +34,10 @@ public class DepartmentService implements IDepartmentService{
 		
 	public void createDepartment(Department department) {
 		repository.createDepartment(department);
+	}
+	
+	public void createDetailDepartment(DetailDepartment department) {
+		repository.createDetailDepartment(department);
 	}
 
 	public Address getAddressID(short id) {

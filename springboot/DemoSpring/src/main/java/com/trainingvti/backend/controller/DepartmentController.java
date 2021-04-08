@@ -41,14 +41,13 @@ public class DepartmentController {
 		// convert list entity -> list dto
 		List<DepartmentDTO> dtos = new ArrayList<>();
 		for (Department entity : entities) {
-			if (entity instanceof Department) {
-				DepartmentDTO dto = new DepartmentDTO(entity.getId(), entity.getName(), null, null);
-				dtos.add(dto);
-			}
 			if (entity instanceof DetailDepartment) {
 				DepartmentDTO dto = new DepartmentDTO(entity.getId(), entity.getName(),
 						((DetailDepartment) entity).getAddress().getId(),
 						((DetailDepartment) entity).getEmulationPoint());
+				dtos.add(dto);
+			} else {
+				DepartmentDTO dto = new DepartmentDTO(entity.getId(), entity.getName(), null, null);
 				dtos.add(dto);
 			}
 		}
@@ -75,18 +74,17 @@ public class DepartmentController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<?> createDepartment(@RequestBody DepartmentForm form) {
-		if (form.getAddress() == null && form.getEmulationPoint() == null) {
+	public ResponseEntity<?> createDepartment(@RequestBody DepartmentDTO dto) {
+		if (dto.getAddress() == null && dto.getEmulationPoint() == null) {
 			Department department = new Department();
-			department.setName(form.getName());
-			service.createDepartment(department);
+			department.setName(dto.getName());
 		} else {
 			DetailDepartment department = new DetailDepartment();
-			department.setName(form.getName());
-			Address address = service.getAddressID(form.getAddress()); 
+			department.setName(dto.getName());
+			Address address = service.getAddressID(dto.getAddress());
 			department.setAddress(address);
-			department.setEmulationPoint(form.getEmulationPoint());
-			service.createDepartment(department);
+			department.setEmulationPoint(dto.getEmulationPoint());
+			service.createDetailDepartment(department);
 		}
 		return new ResponseEntity<String>("Create successfully!", HttpStatus.CREATED);
 	}
