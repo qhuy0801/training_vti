@@ -161,3 +161,8 @@ table.table .avatar {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* Style the sort */
+.sortButton {
+  cursor: pointer;
+}

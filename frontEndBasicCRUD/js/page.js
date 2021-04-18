@@ -21,6 +21,11 @@ function clickNavListEmployee() {
 var departments = [];
 
 // page
+var currentPage = 1;
+
+// sort
+var isAsc = true;
+var currentFieldName = "id";
 
 function getListEmployee(page) {
   // empty the old data first
@@ -33,16 +38,15 @@ function getListEmployee(page) {
   var search = document.getElementById("searchInput").value;
 
   // search logic
-  if (search != null && search != undefined && search.length != 0) {
-    url += "?search=" + search + "&sort=id,asc";
-  } else {
-    url += "?sort=id,asc";
-  }
+    url += "?search=" + search;
+  
+
+  // sort logic
+  url += "&sort=" + currentFieldName + "," + (isAsc? "asc" : "desc")
 
   // page logic
-  if (page != null && page != undefined) {
-    url += "&page=" + page;
-  }
+  url += "&page=" + page;
+  currentPage = page;
 
   $.get(url, function (data, status) {
     departments = data.content;
@@ -82,20 +86,37 @@ function renderPaging(totalPages){
 
   // previous
   $('#pagination').append(
-    `<li class="page-item disabled"><a href="#">Previous</a></li>`
+    `<li class="page-item disable"><a href="#">Previous</a></li>`
   )
 
   // number of pages
   for (let index = 1; index <= totalPages; index++) {
+   
       $('#pagination').append(
-        `<li class="page-item"><a href="#" class="page-link" onclick="getListEmployee(${index})">${index}</a></li>`
+        `<li class="page-item ` +(index==currentPage? 'active': '')+ `"><a href="#" class="page-link" onclick="getListEmployee(${index})">${index}</a></li>`
       );
+  
+    // else {
+    //   $('#pagination').append(
+    //     `<li class="page-item"><a href="#" class="page-link" onclick="getListEmployee(${index})">${index}</a></li>`
+    //   );
+    // }
   }
 
   // next
   $('#pagination').append(
     `<li class="page-item"><a href="#" class="page-link">Next</a></li>`
   )
+}
+
+function onSort(fieldName){
+  if(currentFieldName != fieldName){
+      isAsc = true;
+      currentFieldName = fieldName;
+  }else{
+      isAsc = !isAsc;
+  }
+  getListEmployee();
 }
 
 function openSearchFunction() {
@@ -243,4 +264,3 @@ function resetForm() {
   document.getElementById("address").value = "";
   document.getElementById("emulationPoint").value = "";
 }
-

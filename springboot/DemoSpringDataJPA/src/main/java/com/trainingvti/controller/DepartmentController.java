@@ -1,5 +1,6 @@
 package com.trainingvti.controller;
 
+import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +33,13 @@ public class DepartmentController {
 
 	@Autowired
 	private IDepartmentService service;
-	
+
 	@Autowired
 	private IAddressRepository addressRepository;
 
 	// done
 	@GetMapping()
-	public Page<?> getDepartmentAll(
-			Pageable pageable,
-			DepartmentFilter filter,
+	public Page<?> getDepartmentAll(Pageable pageable, DepartmentFilter filter,
 			@RequestParam(name = "search", required = false) String search) {
 
 		// get data
@@ -57,10 +56,9 @@ public class DepartmentController {
 				return dto;
 			}
 		});
-		
+
 		return dtos;
 	}
-	
 
 	// done
 	@GetMapping(value = "/{id}")
@@ -79,7 +77,7 @@ public class DepartmentController {
 		// simply return will work, dont need this
 		return new ResponseEntity<DepartmentDTO>(dto, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "name/{name}")
 	public ResponseEntity<?> getDepartmentID(@PathVariable(name = "name") String name) {
 		// declare dto
@@ -122,5 +120,10 @@ public class DepartmentController {
 	public ResponseEntity<?> deleteDepartment(@PathVariable(name = "id") short id) {
 		service.deleteDepartment(id);
 		return new ResponseEntity<String>("Delete successfully!", HttpStatus.OK);
+	}
+
+	@DeleteMapping
+	public void deleteDepartment(@RequestParam(name = "ids") List<Short> ids) {
+		service.deleteDepartmens(ids);
 	}
 }

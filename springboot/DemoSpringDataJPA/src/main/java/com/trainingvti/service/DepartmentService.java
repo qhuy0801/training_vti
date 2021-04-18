@@ -92,6 +92,10 @@ public class DepartmentService implements IDepartmentService {
 	public void deleteDepartment(short id) {
 		departmentRepository.deleteById(id);
 	}
+	
+	public void deleteDepartmens(List<Short> ids) {
+		departmentRepository.deleteByIds(ids);
+	}
 
 	public void createDepartment(Department department) {
 		departmentRepository.save(department);

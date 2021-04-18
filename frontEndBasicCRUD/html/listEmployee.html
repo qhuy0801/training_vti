@@ -17,17 +17,17 @@
           <!-- search bar -->
           <div class="input-group searchBar">
             <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-              aria-describedby="search-addon" id="searchInput"/>
-            <button type="button" class="btn btn-secondary" onclick="openSearchFunction()"><i class="material-icons search">&#xe8b6;</i>Search</button>
+              aria-describedby="search-addon" id="searchInput" />
+            <button type="button" class="btn btn-secondary" onclick="openSearchFunction()"><i
+                class="material-icons search">&#xe8b6;</i>Search</button>
           </div>
-
         </div>
       </div>
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
+            <th class="sortButton" onclick="onSort('id')">#</th>
+            <th class="sortButton" onclick="onSort('name')">Name</th>
             <th>Address</th>
             <th>Emulation Point</th>
             <th>Action</th>
