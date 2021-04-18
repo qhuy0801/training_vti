@@ -1,4 +1,4 @@
-package com.trainingvti.backend.dto;
+package com.trainingvti.dto;
 
 public class DepartmentDTO {
 	private short id;

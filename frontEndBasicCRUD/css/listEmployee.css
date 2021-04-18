@@ -155,3 +155,9 @@ table.table .avatar {
   font-size: 13px;
 }
 
+/* Style the search bar */
+.searchBar {
+  margin-top: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+}

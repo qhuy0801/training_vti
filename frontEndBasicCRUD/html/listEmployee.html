@@ -13,6 +13,14 @@
             <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
               <span>Export to Excel</span></a>
           </div>
+
+          <!-- search bar -->
+          <div class="input-group searchBar">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" id="searchInput"/>
+            <button type="button" class="btn btn-secondary" onclick="openSearchFunction()"><i class="material-icons search">&#xe8b6;</i>Search</button>
+          </div>
+
         </div>
       </div>
       <table class="table table-striped table-hover">
@@ -31,14 +39,14 @@
       </table>
       <div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-        <ul class="pagination">
-          <li class="page-item disabled"><a href="#">Previous</a></li>
+        <ul class="pagination" id="pagination">
+          <!-- <li class="page-item disabled"><a href="#">Previous</a></li>
           <li class="page-item"><a href="#" class="page-link">1</a></li>
           <li class="page-item"><a href="#" class="page-link">2</a></li>
           <li class="page-item active"><a href="#" class="page-link">3</a></li>
           <li class="page-item"><a href="#" class="page-link">4</a></li>
           <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li> -->
         </ul>
       </div>
     </div>
@@ -63,14 +71,12 @@
           <label for="name"><b>Name</b></label>
           <input type="text" placeholder="Enter name" name="name" id="name" required />
 
-          <label for="createDate"><b>Date created</b></label>
-          <input type="text" placeholder="Enter date created" name="createDate" id="createDate" required />
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter address code" name="address" id="address" required />
 
-          <label for="role"><b>Role</b></label>
-          <input type="text" placeholder="Please choose role" name="role" id="role" required />
-
-          <label for="status"><b>Status</b></label>
-          <input type="text" placeholder="Please set current status" name="status" id="status" required />
+          <label for="emulationPoint"><b>Emulation Point</b></label>
+          <input type="text" placeholder="Please choose emulation point" name="emulationPoint" id="emulationPoint"
+            required />
         </div>
 
         <!-- Modal footer -->

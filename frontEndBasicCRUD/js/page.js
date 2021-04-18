@@ -17,15 +17,36 @@ function clickNavListEmployee() {
   });
 }
 
-// initiate employees array
+// initiate deparments array
 var departments = [];
 
-function getListEmployee() {
+// page
+
+function getListEmployee(page) {
   // empty the old data first
   $('tbody').empty();
-  $.get("http://localhost:8080/api/v1/departments", function (data, status) {
-    employees = data;
-    employees.forEach(function (item) {
+
+  // links
+  var url = "http://localhost:8080/api/v1/departments";
+
+  // get search input
+  var search = document.getElementById("searchInput").value;
+
+  // search logic
+  if (search != null && search != undefined && search.length != 0) {
+    url += "?search=" + search + "&sort=id,asc";
+  } else {
+    url += "?sort=id,asc";
+  }
+
+  // page logic
+  if (page != null && page != undefined) {
+    url += "&page=" + page;
+  }
+
+  $.get(url, function (data, status) {
+    departments = data.content;
+    departments.forEach(function (item) {
       $("tbody").append(
         `<tr>
             <td>${item.id}</td>
@@ -51,7 +72,35 @@ function getListEmployee() {
           </tr>`
       );
     })
+    // get total pages
+    renderPaging(data.totalPages);
   })
+}
+
+function renderPaging(totalPages){
+  $('#pagination').empty();
+
+  // previous
+  $('#pagination').append(
+    `<li class="page-item disabled"><a href="#">Previous</a></li>`
+  )
+
+  // number of pages
+  for (let index = 1; index <= totalPages; index++) {
+      $('#pagination').append(
+        `<li class="page-item"><a href="#" class="page-link" onclick="getListEmployee(${index})">${index}</a></li>`
+      );
+  }
+
+  // next
+  $('#pagination').append(
+    `<li class="page-item"><a href="#" class="page-link">Next</a></li>`
+  )
+}
+
+function openSearchFunction() {
+  getListEmployee();
+  // document.getElementById("searchInput").value = "";
 }
 
 function openAddModal() {
@@ -99,9 +148,8 @@ function openUpdateModal(id) {
   // fill data
   document.getElementById("id").value = employees[index].id;
   document.getElementById("name").value = employees[index].name;
-  document.getElementById("createDate").value = employees[index].createDate;
-  document.getElementById("role").value = employees[index].role;
-  document.getElementById("status").value = employees[index].status;
+  document.getElementById("address").value = employees[index].address;
+  document.getElementById("emulationPoint").value = employees[index].emulationPoint;
 
   showModal();
 }
@@ -118,32 +166,31 @@ function save() {
 function updateEmployee() {
   var id = document.getElementById("id").value;
   var name = document.getElementById("name").value;
-  var createDate = document.getElementById("createDate").value;
-  var role = document.getElementById("role").value;
-  var status = document.getElementById("status").value;
+  var address = document.getElementById("address").value;
+  var emulationPoint = document.getElementById("emulationPoint").value;
   // TODO validate
 
-  employee = {
+  department = {
+    "id": id,
     "name": name,
-    "createDate": createDate,
-    "role": role,
-    "status": status,
+    "address": address,
+    "emulationPoint": emulationPoint
   }
 
   $.ajax({
-    url: 'https://6060430004b05d0017ba22b2.mockapi.io/api/v1/Employee/' + id,
+    url: 'http://localhost:8080/api/v1/departments/' + id,
     type: 'PUT',
-    data: employee,
-    success: function (result) {
-      // error
-      if (result == undefined || result == null) {
-        alert("Error when loading data");
-        return;
-      }
-
-      // success
+    data: JSON.stringify(department), // body
+    contentType: "application/json", // type of body (json, xml, text)
+    // dataType: 'json', // datatype return
+    success: function (data, textStatus, xhr) {
       hideModal();
-      getListEmployee();
+      getListEmployee()
+    },
+    error(jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
     }
   });
 }
@@ -165,19 +212,19 @@ function openConfirmDelete(id) {
 
 function deleteEmployee(id) {
   $.ajax({
-    url: 'https://6060430004b05d0017ba22b2.mockapi.io/api/v1/Employee/' + id,
+    url: 'http://localhost:8080/api/v1/departments/' + id,
     type: 'DELETE',
-    success: function(result) {
-        // error
-        if (result == undefined || result == null) {
-            alert("Error when loading data");
-            return;
-        }
+    success: function (result) {
+      // error
+      if (result == undefined || result == null) {
+        alert("Error when loading data");
+        return;
+      }
 
-        // success
-        getListEmployee();
+      // success
+      getListEmployee();
     }
-})
+  })
 }
 
 // modal functions
@@ -193,8 +240,7 @@ function hideModal() {
 function resetForm() {
   document.getElementById("id").value = "";
   document.getElementById("name").value = "";
-  document.getElementById("createDate").value = "";
-  document.getElementById("role").value = "";
-  document.getElementById("status").value = "";
+  document.getElementById("address").value = "";
+  document.getElementById("emulationPoint").value = "";
 }
 

@@ -1,9 +1,9 @@
 package com.trainingvti.backend.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.hql.internal.ast.DetailedSemanticException;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -13,14 +13,14 @@ import com.trainingvti.entity.Department.DetailDepartment;
 import com.trainingvti.utils.HibernateUtils;
 
 @Repository
-public class DepartmentRepository implements IDepartmentRepository{
+public class DepartmentRepository implements IDepartmentRepository {
 	private HibernateUtils hibernateUtils;
 
 	public DepartmentRepository() {
 		hibernateUtils = HibernateUtils.getInstance();
 	}
-	
-	public Department getDepartmentID(short id) {
+
+	public DetailDepartment getDepartmentID(short id) {
 		Session session = null;
 
 		try {
@@ -29,7 +29,7 @@ public class DepartmentRepository implements IDepartmentRepository{
 			session = hibernateUtils.openSession();
 
 			// Step 2: get
-			Department department = session.get(Department.class, id);
+			DetailDepartment department = session.get(DetailDepartment.class, id);
 
 			return department;
 
@@ -39,21 +39,25 @@ public class DepartmentRepository implements IDepartmentRepository{
 			}
 		}
 	}
-	
-	public void createDetailDepartment(DetailDepartment department) {
 
+	// on working
+	public List<DetailDepartment> getDepartmentsID(List<Short> ids) {
 		Session session = null;
 
 		try {
 
-			// get session
+			// Step 1: create session
 			session = hibernateUtils.openSession();
-			session.beginTransaction();
 
-			// create
-			session.save(department);
+			// Step 2: get
+			List<DetailDepartment> departments = new ArrayList<>();
+			
+			for (Short id : ids) {
+				departments.add(session.get(DetailDepartment.class, id));
+			}
 
-			session.getTransaction().commit();
+			return departments;
+
 		} finally {
 			if (session != null) {
 				session.close();
@@ -61,6 +65,10 @@ public class DepartmentRepository implements IDepartmentRepository{
 		}
 	}
 	
+	public void deleteDepartments(List<Short> ids) {
+		
+	}
+
 	public void createDepartment(Department department) {
 
 		Session session = null;
@@ -81,7 +89,7 @@ public class DepartmentRepository implements IDepartmentRepository{
 			}
 		}
 	}
-		
+
 	public List<Department> getDepartmentAll() {
 		Session session = null;
 
@@ -100,7 +108,7 @@ public class DepartmentRepository implements IDepartmentRepository{
 			}
 		}
 	}
-	
+
 	public void updateDepartment(Department department) {
 
 		Session session = null;
@@ -121,7 +129,7 @@ public class DepartmentRepository implements IDepartmentRepository{
 			}
 		}
 	}
-	
+
 	public void deleteDepartment(short id) {
 
 		Session session = null;
@@ -146,7 +154,7 @@ public class DepartmentRepository implements IDepartmentRepository{
 			}
 		}
 	}
-	
+
 	public Address getAddressID(short id) {
 		Session session = null;
 
