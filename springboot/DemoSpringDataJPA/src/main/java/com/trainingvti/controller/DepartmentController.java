@@ -28,7 +28,6 @@ import com.trainingvti.service.IDepartmentService;
 
 @RestController
 @RequestMapping(value = "api/v1/departments")
-@CrossOrigin("*")
 public class DepartmentController {
 
 	@Autowired
@@ -60,7 +59,7 @@ public class DepartmentController {
 		return dtos;
 	}
 
-	// done
+	// done 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> getDepartmentID(@PathVariable(name = "id") short id) {
 		// declare dto
@@ -85,13 +84,17 @@ public class DepartmentController {
 
 		// declare entity to fecth data
 		Department entity = service.getDepartmentName(name);
+		if (entity == null) {
+			return null;
+			
+		} else {
+			dto = new DepartmentDTO(entity.getId(), entity.getName(),
+					((DetailDepartment) entity).getAddress() == null ? null
+							: ((DetailDepartment) entity).getAddress().getId(),
+					((DetailDepartment) entity).getEmulationPoint());
 
-		dto = new DepartmentDTO(entity.getId(), entity.getName(),
-				((DetailDepartment) entity).getAddress() == null ? null
-						: ((DetailDepartment) entity).getAddress().getId(),
-				((DetailDepartment) entity).getEmulationPoint());
-
-		return new ResponseEntity<DepartmentDTO>(dto, HttpStatus.OK);
+			return new ResponseEntity<DepartmentDTO>(dto, HttpStatus.OK);
+		}
 	}
 
 	// done

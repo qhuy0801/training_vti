@@ -166,3 +166,8 @@ table.table .avatar {
 .sortButton {
   cursor: pointer;
 }
+
+/* Style form control */
+.form-control-feedback{
+  display: none;
+}

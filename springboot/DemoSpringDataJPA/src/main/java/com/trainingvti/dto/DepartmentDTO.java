@@ -6,6 +6,10 @@ public class DepartmentDTO {
 	private Short address;
 	private Short emulationPoint;
 	
+	public DepartmentDTO() {
+		super();
+	}
+
 	public DepartmentDTO(short id, String name, Short address, Short emulationPoint) {
 		super();
 		this.id = id;
@@ -14,6 +18,24 @@ public class DepartmentDTO {
 		this.emulationPoint = emulationPoint;
 	}
 	
+	
+	
+	public void setId(short id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAddress(Short address) {
+		this.address = address;
+	}
+
+	public void setEmulationPoint(Short emulationPoint) {
+		this.emulationPoint = emulationPoint;
+	}
+
 	public short getId() {
 		return id;
 	}

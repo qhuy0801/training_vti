@@ -8,7 +8,7 @@
     transition: top 0.3s;
   }
   
-  #navbar a {
+  #navbar a,  #navbar span{
     float: left;
     display: block;
     color: #f2f2f2;
@@ -18,7 +18,13 @@
     font-size: 17px;
   }
   
-  #navbar a:hover {
+  #navbar a:hover,  #navbar span:hover {
     background-color: #ddd;
     color: black;
   }
+
+  #navbar span {
+    float: right;
+  }
+
+  #navbar fullName 
