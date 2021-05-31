@@ -14,7 +14,7 @@ import com.trainingvti.entity.User;
 import com.trainingvti.repository.IUserRepository;
 
 @Service
-public class UserService implements IUserService {
+public class AccountService implements IUserService {
 
 	@Autowired
 	private IUserRepository repository;

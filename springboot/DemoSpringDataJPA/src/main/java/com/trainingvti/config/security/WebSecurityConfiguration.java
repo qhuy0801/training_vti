@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.trainingvti.service.UserService;
+import com.trainingvti.service.AccountService;
 
 /**
  * This class is config of secutity.
@@ -26,7 +26,7 @@ import com.trainingvti.service.UserService;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserService service;
+	private AccountService service;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

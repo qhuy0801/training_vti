@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trainingvti.dto.UserDTO;
 import com.trainingvti.entity.User;
-import com.trainingvti.service.UserService;
+import com.trainingvti.service.AccountService;
 
 @RestController
 @RequestMapping(value = "api/v1/login")
 public class LoginController {
 	@Autowired
-	private UserService userService;
+	private AccountService userService;
 
 	@GetMapping
 	public UserDTO login(Principal principal) {
